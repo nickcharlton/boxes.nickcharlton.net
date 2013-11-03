@@ -81,9 +81,9 @@ I'd also recommend skim reading the [CORS S3][] documentation.
 
 Copyright (c) Nick Charlton 2013. Licensed under the MIT license.
 
-[boxes]: /nickcharlton/boxes
+[boxes]: https://github.com/nickcharlton/boxes
 [Rufus Pollock]: http://rufuspollock.org/
-[s3-file-listing]: /rgrp/s3-bucket-listing
+[s3-file-listing]: https://github.com/rgrp/s3-bucket-listing
 [static-site-docs]: http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
 [CORS S3]: http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
 
