@@ -1,14 +1,73 @@
-<html>
-<head>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Nick Charlton">
+    <meta name="description" content="A collection of prebuilt Vagrantboxes.">
+
+    <title>boxes.nickcharlton.net</title>
+
+    <style>
+      body {
+          font-family: 'Lucida Grande', sans-serif;
+          width: 90%;
+          margin: 5%;
+      }
+
+      code {
+          font-family: 'Inconsolata', 'Menlo', monospace;
+          font-size: 95%;
+      }
+
+      footer {
+          margin-top: 5%;
+          font-size: 80%;
+      }
+
+      footer p {
+          margin: 1px;
+      }
+
+      div#listing {
+          margin: 5% 0% 5% 0%;
+      }
+    </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+      var BUCKET_URL = 'http://boxes.nickcharlton.net.s3-us-west-2.amazonaws.com';
+    </script>
+    <script src="list.js"></script>
+  </head>
 <body>
+  <header>
+    <h1>boxes.nickcharlton.net</h1>
+  </header>
+
+  <section id="description">
+    <p><a href="http://www.vagrantup.com/">Vagrant</a> is an amazing tool for 
+       short-lived and automated virtual machines, but the boxes are often quite
+       outdated. <a href="https://github.com/nickcharlton/boxes">boxes</a> is a tool 
+       for automating building Vagrantboxes in many different styles. This is a list
+       of recently constructed boxes, which are rebuilt every month.</p>
+
+    <h2>Usage</h2>
+    <p>Add a box as you would usually:</p>
+    
+    <pre><code>$ vagrant box add {title} {url}
+$ vagrant init {title}
+$ vagrant up</code></pre>
+    
+    <p>Additionally, it supports the <a href="https://github.com/spil-ruslan/vagrant-box-updater">vagrant-box-updater plugin</a>.</p>
+  </section>
+  
   <div id="listing"></div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script type="text/javascript">
-  var BUCKET_URL = 'http://boxes.nickcharlton.net.s3-us-west-2.amazonaws.com';
-</script>
-<script src="list.js"></script>
+  <footer>
+    <p>A project by <a href="http://nickcharlton.net/">Nick Charlton</a>. Source on
+    <a href="https://github.com/nickcharlton/boxes.nickcharlton.net">GitHub</a>.</p>
+  </footer>
+
 </body>
 </html>
 
