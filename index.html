@@ -19,6 +19,19 @@
           font-size: 95%;
       }
 
+      table {
+          border-collapse: collapse;
+      }
+
+      th {
+          text-align: left;
+      }
+
+      td {
+          border: 1px solid #666;
+          padding: 5px;
+      }
+
       footer {
           margin-top: 5%;
           font-size: 80%;
@@ -26,10 +39,6 @@
 
       footer p {
           margin: 1px;
-      }
-
-      div#listing {
-          margin: 5% 0% 5% 0%;
       }
     </style>
 
@@ -59,10 +68,13 @@
 $ vagrant init {title}
 $ vagrant up</code></pre>
     
-    <p>Additionally, it supports the <a href="https://github.com/spil-ruslan/vagrant-box-updater">vagrant-box-updater plugin</a>.</p>
+    <p>Additionally, it&rsquo;ll work with the <a href="https://github.com/spil-ruslan/vagrant-box-updater">vagrant-box-updater plugin</a>.</p>
   </section>
   
-  <div id="listing"></div>
+  <section id="boxes">
+    <h2>Boxes</h2>
+    <div id="listing"></div>
+  </section>
 
   <footer>
     <p>A project by <a href="http://nickcharlton.net/">Nick Charlton</a>. Source on
