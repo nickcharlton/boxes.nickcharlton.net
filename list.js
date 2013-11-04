@@ -152,14 +152,3 @@ function getHumanReadableFileSize(inputBytes) {
   return Math.max(inputBytes, 0.1).toFixed(1) + byteUnits[i];
 }
 
-function padRight(padString, length) {
-  var str = padString.slice(0, length-3);
-  if (padString.length > str.length) {
-    str += '...';
-  }
-  while (str.length < length) {
-    str = str + ' ';
-  }
-  return str;
-}
-
