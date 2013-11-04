@@ -135,10 +135,21 @@ function renderTableHeader() {
 function renderRow(item, cols) {
   var row = '<tr>\n';
   row += '<td><a href="' + item.href + '">' + item.keyText + '</a></td>\n';
-  row += '<td>' + item.Size + 'MB</td>\n';
-  row += '<td>' + item.LastModified + '</td>\n';
+  row += '<td>' + getHumanReadableFileSize(item.Size) + '</td>\n';
+  row += '<td>' + new Date(item.LastModified).toGMTString() + '</td>\n';
   row += '</tr>\n';
   return row;
+}
+
+function getHumanReadableFileSize(inputBytes) {
+  var i = -1;
+  var byteUnits = ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  do {
+    inputBytes = inputBytes / 1024;
+    i++;
+  } while (inputBytes > 1024);
+
+  return Math.max(inputBytes, 0.1).toFixed(1) + byteUnits[i];
 }
 
 function padRight(padString, length) {
