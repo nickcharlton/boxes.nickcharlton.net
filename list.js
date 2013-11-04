@@ -40,7 +40,7 @@ jQuery(function($) {
   }
 
   // set loading notice
-  $('#listing').html('<h3>Loading <img src="http://assets.okfn.org/images/icons/ajaxload-circle.gif" /></h3>');
+  $('#listing').html('<h3>Loading…</h3>');
   $.get(s3_rest_url)
     .done(function(data) {
       // clear loading notice
@@ -76,8 +76,7 @@ jQuery(function($) {
 function renderTable(files, prefix) {
   var cols = [ 45, 30, 15 ];
   var content = [];
-  content.push(padRight('Last Modified', cols[1]) + '  ' + padRight('Size', cols[2]) + 'Key \n');
-  content.push(new Array(cols[0] + cols[1] + cols[2] + 4).join('-') + '\n');
+  content.push(renderTableHeader());
   
   // add the ../ at the start of the directory listing
   // and remove first item (which will be that directory)
@@ -110,18 +109,35 @@ function renderTable(files, prefix) {
       // in that case href for a file should point to s3 bucket
       item.href = '/' + item.Key;
     }
-    var row = renderRow(item, cols);
-    content.push(row + '\n');
+    
+    // don't bother rendering this or the index.
+    if (!/index.html|list.js/.test(item.keyText)) {
+      var row = renderRow(item, cols);
+      content.push(row + '\n');
+    }
   });
 
-  document.getElementById('listing').innerHTML = '<pre>' + content.join('') + '</pre>';
+  // add in the table footer
+  content.push('</table>\n');
+  document.getElementById('listing').innerHTML = content.join('');
+}
+
+function renderTableHeader() {
+  var header = '<table>\n';
+  header += '<tr>\n';
+  header += '<th>Box</th>\n';
+  header += '<th>Size</th>\n';
+  header += '<th>Last Modified</th>\n';
+  header += '</tr>\n';
+  return header;
 }
 
 function renderRow(item, cols) {
-  var row = '';
-  row += padRight(item.LastModified, cols[1]) + '  ';
-  row += padRight(item.Size, cols[2]);
-  row += '<a href="' + item.href + '">' + item.keyText + '</a>';
+  var row = '<tr>\n';
+  row += '<td><a href="' + item.href + '">' + item.keyText + '</a></td>\n';
+  row += '<td>' + item.Size + 'MB</td>\n';
+  row += '<td>' + item.LastModified + '</td>\n';
+  row += '</tr>\n';
   return row;
 }
 
